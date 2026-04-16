@@ -1,0 +1,130 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Container } from "../ui/Container";
+import Image from "next/image";
+
+export const Hero = () => {
+  return (
+    <section className="relative min-h-screen flex items-center pt-32 pb-20 bg-background overflow-hidden">
+      <Container>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="relative z-10">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-3 py-1 bg-white modern-shadow rounded-full text-xs font-bold mb-8 border border-border/50"
+            >
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              Exclusivo para Alunos Método PNG
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-5xl md:text-7xl font-black text-foreground leading-[1.05] tracking-tight mb-6"
+            >
+              Comece no Google Ads <br />
+              com <span className="text-primary italic">blindagem</span> desde <br />
+              o <span className="text-primary italic">dia zero</span>.
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-muted-foreground text-lg md:text-xl font-medium leading-relaxed mb-10 max-w-lg"
+            >
+              A Ratoeira Ads e o Michael Pogne se uniram para dar a você, aluno do Método PNG, 
+              acesso exclusivo à ferramenta que protege seu orçamento e rastreia cada venda.
+            </motion.p>
+
+            {/* Capture Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-3 max-w-md"
+            >
+              <input 
+                type="email" 
+                placeholder="Seu melhor e-mail" 
+                className="input-pill flex-grow modern-shadow text-sm"
+              />
+              <button className="bg-foreground text-background btn-pill text-sm font-bold modern-shadow hover:bg-black/90 whitespace-nowrap">
+                Garantir Meu Acesso
+              </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="mt-10 flex flex-wrap items-center gap-4"
+            >
+              <div className="flex -space-x-2">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="w-8 h-8 rounded-full border-2 border-background bg-zinc-300" />
+                ))}
+              </div>
+              <p className="text-xs font-bold text-muted-foreground">
+                <span className="text-foreground">Uma parceria</span> Ratoeira Ads × Método PNG
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative h-[600px] w-full"
+          >
+            <div className="relative w-full h-full rounded-2xl overflow-hidden modern-shadow border-4 border-white">
+              {/* Nota: Vou usar a imagem gerada. Como o caminho muda por causa do timestamp,
+                  espero que o sistema resolva ou eu forneça o caminho exato se necessário.
+                  Mas aqui usarei o padrão do projeto. */}
+              <Image 
+                src="/hero-team.png" 
+                alt="Time Ratoeira Ads" 
+                fill 
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            </div>
+
+            {/* Floating Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="absolute -bottom-6 -left-6 glass-card p-6 rounded-xl max-w-[240px]"
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                  <span className="text-primary font-bold text-xs">98%</span>
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground">Eficiência</p>
+                  <p className="text-xs font-bold">Cliques Blindados</p>
+                </div>
+              </div>
+              <div className="h-1 w-full bg-zinc-100 rounded-full overflow-hidden">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  animate={{ width: "98%" }}
+                  transition={{ duration: 1.5, delay: 1 }}
+                  className="h-full bg-primary"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </Container>
+    </section>
+  );
+};
