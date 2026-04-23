@@ -7,14 +7,14 @@ import Image from "next/image";
 
 export const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="py-24 bg-[#0f0e0e] overflow-hidden text-white">
+    <section id="how-it-works" className="py-24 bg-[#f7f4f4] overflow-hidden text-foreground">
       <Container>
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full text-[10px] font-bold uppercase tracking-widest text-primary mb-6 border border-border"
           >
             A Tecnologia por trás do Lucro
           </motion.div>
@@ -33,7 +33,7 @@ export const HowItWorks = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-white/60 text-lg max-w-2xl mx-auto"
+            className="text-muted-foreground text-lg max-w-2xl mx-auto"
           >
             Uma demonstração rápida de como nossa blindagem inteligente identifica e bloqueia 
             cliques fraudulentos antes que eles consumam seu orçamento.

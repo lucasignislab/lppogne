@@ -3,6 +3,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Integrations } from "@/components/sections/Integrations";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Features } from "@/components/sections/Features";
+import { PainPoints } from "@/components/sections/PainPoints";
 import { Pricing } from "@/components/sections/Pricing";
 
 export default function Home() {
@@ -11,9 +12,10 @@ export default function Home() {
       <Header />
       <Hero />
       <Integrations />
+      <Pricing />
       <HowItWorks />
       <Features />
-      <Pricing />
+      <PainPoints />
       
       <footer className="py-20 border-t border-white/5 bg-black">
         <div className="container mx-auto px-4 text-center">
