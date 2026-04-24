@@ -4,50 +4,31 @@ import { motion } from "framer-motion";
 import { Container } from "../ui/Container";
 import { Play } from "lucide-react";
 import Image from "next/image";
+import { AnimatedSection, AnimatedItem } from "../ui/AnimatedSection";
 
 export const HowItWorks = () => {
   return (
     <section id="how-it-works" className="py-24 bg-[#f7f4f4] overflow-hidden text-foreground">
       <Container>
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full text-[10px] font-bold uppercase tracking-widest text-primary mb-6 border border-border"
-          >
+        <AnimatedSection className="text-center mb-16" stagger={0.1}>
+          <AnimatedItem className="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full text-[10px] font-bold uppercase tracking-widest text-primary mb-6 border border-border">
             A Tecnologia por trás do Lucro
-          </motion.div>
+          </AnimatedItem>
           
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-black tracking-tight mb-6"
-          >
-            Veja como a <span className="text-primary italic">Ratoeira</span> protege seu capital
-          </motion.h2>
+          <AnimatedItem>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-6">
+              Veja como a <span className="text-primary italic">Ratoeira</span> protege seu capital
+            </h2>
+          </AnimatedItem>
           
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-lg max-w-2xl mx-auto"
-          >
+          <AnimatedItem className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Uma demonstração rápida de como nossa blindagem inteligente identifica e bloqueia 
             cliques fraudulentos antes que eles consumam seu orçamento.
-          </motion.p>
-        </div>
+          </AnimatedItem>
+        </AnimatedSection>
 
         {/* Browser Mockup / Video Player */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative max-w-5xl mx-auto"
-        >
+        <AnimatedItem className="relative max-w-5xl mx-auto">
           {/* Browser Header */}
           <div className="bg-zinc-800 rounded-t-2xl px-4 py-3 flex items-center gap-2 border border-white/10 border-b-0">
             <div className="flex gap-1.5">
@@ -94,7 +75,7 @@ export const HowItWorks = () => {
           
           {/* Bottom Glow */}
           <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-4/5 h-24 bg-primary/20 blur-[100px] pointer-events-none" />
-        </motion.div>
+        </AnimatedItem>
       </Container>
     </section>
   );

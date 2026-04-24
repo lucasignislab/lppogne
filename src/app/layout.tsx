@@ -15,7 +15,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Ratoeira Ads | Blindagem de Google Ads e Anti-Fraude",
   description: "A blindagem definitiva contra cliques fraudulentos e concorrentes mal-intencionados.",
+  icons: {
+    icon: '/logor.png',
+  },
 };
+
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 
 export default function RootLayout({
   children,
@@ -29,7 +34,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
-        {children}
+        <SmoothScrollProvider>
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );

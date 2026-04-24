@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Container } from "../ui/Container";
 import { CheckCircle2, MousePointerClick } from "lucide-react";
+import { AnimatedSection, AnimatedItem } from "../ui/AnimatedSection";
 
 const features = [
   {
@@ -35,36 +36,27 @@ export const Features = () => {
   return (
     <section id="features" className="py-24 bg-[#f7f4f4] overflow-hidden">
       <Container>
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-block px-4 py-1 bg-primary/10 text-primary font-black text-xs tracking-widest rounded-full mb-6"
-          >
+        <AnimatedSection className="text-center max-w-5xl mx-auto mb-20" stagger={0.1}>
+          <AnimatedItem className="inline-block px-4 py-1 bg-primary/10 text-primary font-black text-xs tracking-widest rounded-full mb-6">
             A PRIMEIRA E MAIS COMPLETA FERRAMENTA BRASILEIRA PARA GOOGLE ADS
-          </motion.div>
-          <h2 className="text-[26px] xs:text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter leading-[1.2] md:leading-[1.15]">
-            A única ferramenta brasileira <br className="sm:hidden" />
-            que rastreia, <span className="text-primary">protege</span> e dá <br className="sm:hidden" />
-            <span className="text-foreground">visão total</span> da sua <br className="sm:hidden" />
-            operação no Google Ads.
-          </h2>
-        </div>
+          </AnimatedItem>
+          <AnimatedItem>
+            <h2 className="text-[26px] xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.2] md:leading-[1.15]">
+              A única ferramenta brasileira <br />
+              que rastreia, <span className="text-primary">protege</span> e dá visão <br />
+              <span className="whitespace-nowrap">total da sua operação no Google Ads.</span>
+            </h2>
+          </AnimatedItem>
+        </AnimatedSection>
 
         <div className="space-y-20">
           {features.map((feature, i) => (
-            <div
+            <AnimatedSection
               key={i}
               className={`flex flex-col ${i % 2 !== 0 ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-12 md:gap-24`}
+              stagger={0.2}
             >
-              <motion.div
-                initial={{ opacity: 0, x: i % 2 !== 0 ? 50 : -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="flex-1 text-left flex flex-col items-start"
-              >
+              <AnimatedItem className="flex-1 text-left flex flex-col items-start">
                 <span className="text-xs font-black text-gray-400 tracking-[0.3em] uppercase mb-4 block">
                   {feature.tag}
                 </span>
@@ -82,32 +74,21 @@ export const Features = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </AnimatedItem>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="flex-1 relative"
-              >
+              <AnimatedItem className="flex-1 relative">
                 <div className="absolute -inset-4 bg-primary/10 rounded-full blur-3xl -z-10" />
                 <img
                   src={feature.image}
                   alt={feature.title}
                   className="w-full h-auto rounded-2xl modern-shadow border-4 border-white"
                 />
-              </motion.div>
-            </div>
+              </AnimatedItem>
+            </AnimatedSection>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-20"
-        >
+        <AnimatedItem className="text-center mt-20">
           <a href="#hero">
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -119,7 +100,7 @@ export const Features = () => {
               <MousePointerClick className="ml-2" />
             </motion.button>
           </a>
-        </motion.div>
+        </AnimatedItem>
       </Container>
     </section>
   );

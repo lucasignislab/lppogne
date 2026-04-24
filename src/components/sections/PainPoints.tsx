@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { AlertTriangle, Ghost, EyeOff, ShieldX } from "lucide-react";
 import { CardSpotlight } from "../ui/card-spotlight";
 import { Container } from "../ui/Container";
-import ChainCarouselSection from "./ChainCarousel";
 
 const pains = [
   {
@@ -129,7 +128,6 @@ export const PainPoints = () => {
           ))}
         </div>
 
-        <ChainCarouselSection />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
