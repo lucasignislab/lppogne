@@ -16,7 +16,9 @@ export const metadata: Metadata = {
   title: "Ratoeira Ads | Blindagem de Google Ads e Anti-Fraude",
   description: "A blindagem definitiva contra cliques fraudulentos e concorrentes mal-intencionados.",
   icons: {
-    icon: '/logor.png',
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
   },
 };
 
@@ -33,6 +35,11 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="icon" href="/icon.png?v=3" sizes="32x32" type="image/png" />
+        <link rel="shortcut icon" href="/icon.png?v=3" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png?v=3" />
+      </head>
       <body suppressHydrationWarning className="min-h-full flex flex-col">
         <SmoothScrollProvider>
           {children}
