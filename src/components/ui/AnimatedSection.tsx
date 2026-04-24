@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import React from "react";
 
 interface AnimatedSectionProps {
@@ -10,10 +10,10 @@ interface AnimatedSectionProps {
   stagger?: number;
 }
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
-  visible: (stagger: number) => ({
-    transition: { staggerChildren: stagger },
+  visible: ({ stagger = 0.1, delay = 0 }: { stagger?: number; delay?: number } = {}) => ({
+    transition: { staggerChildren: stagger, delayChildren: delay },
   }),
 };
 
@@ -29,7 +29,7 @@ export function AnimatedSection({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      custom={stagger}
+      custom={{ stagger, delay }}
       className={className}
     >
       {children}
@@ -48,7 +48,7 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     transition: { 
-      type: "spring", 
+      type: "spring" as const,
       stiffness: 100, 
       damping: 20 
     },
