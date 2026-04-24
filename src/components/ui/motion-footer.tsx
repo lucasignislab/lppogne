@@ -179,11 +179,11 @@ const MagneticButton = React.forwardRef<HTMLElement, MagneticButtonProps>(
           });
         };
 
-        element.addEventListener("mousemove", handleMouseMove as any);
+        element.addEventListener("mousemove", handleMouseMove);
         element.addEventListener("mouseleave", handleMouseLeave);
 
         return () => {
-          element.removeEventListener("mousemove", handleMouseMove as any);
+          element.removeEventListener("mousemove", handleMouseMove);
           element.removeEventListener("mouseleave", handleMouseLeave);
         };
       }, element);
@@ -194,9 +194,9 @@ const MagneticButton = React.forwardRef<HTMLElement, MagneticButtonProps>(
     return (
       <Component
         ref={(node: HTMLElement) => {
-          (localRef as any).current = node;
+          localRef.current = node;
           if (typeof forwardedRef === "function") forwardedRef(node);
-          else if (forwardedRef) (forwardedRef as any).current = node;
+          else if (forwardedRef) (forwardedRef as { current: HTMLElement | null }).current = node;
         }}
         className={cn("cursor-pointer", className)}
         {...props}
@@ -327,7 +327,7 @@ export function CinematicFooter() {
             <div ref={linksRef} className="flex flex-col items-center gap-8 w-full">
               
               {/* Primary CTA */}
-              <MagneticButton as="a" href="#pricing" className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 rounded-full font-black text-sm md:text-base flex items-center gap-3 transition-colors uppercase tracking-wide">
+              <MagneticButton as="a" href="#pricing" className="bg-[#EAB308] text-[#111111] hover:bg-[#d4a107] px-8 py-4 rounded-full font-black text-sm md:text-base flex items-center gap-3 transition-colors uppercase tracking-wide">
                 Garantir Meu Acesso
                 <MousePointerClick className="w-5 h-5" />
               </MagneticButton>

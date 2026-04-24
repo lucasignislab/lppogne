@@ -91,7 +91,7 @@ export const Pricing = () => {
             </ul>
 
             {/* CTA */}
-            <button className="w-full bg-[#0f0e0e] text-white btn-pill text-sm font-bold modern-shadow hover:bg-black/90 flex items-center justify-center gap-2">
+            <button className="w-full bg-[#EAB308] text-[#111111] btn-pill text-sm font-bold modern-shadow hover:bg-[#d4a107] flex items-center justify-center gap-2">
               Garantir Meu Acesso
             </button>
             

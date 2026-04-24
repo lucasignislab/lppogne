@@ -94,7 +94,7 @@ export const Features = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="inline-flex items-center rounded-full bg-primary text-primary-foreground px-8 py-4 font-bold transition-all"
+              className="inline-flex items-center rounded-full bg-[#EAB308] text-[#111111] px-8 py-4 font-bold transition-all hover:bg-[#d4a107]"
             >
               <span>Garantir Meu Acesso</span>
               <MousePointerClick className="ml-2" />

@@ -12,7 +12,7 @@ import { CinematicFooter } from "@/components/ui/motion-footer";
 export default function Home() {
   return (
     <div className="relative w-full bg-black min-h-screen font-sans overflow-x-hidden">
-      <main className="relative z-10 w-full bg-white flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-b-[40px] md:rounded-b-[80px] overflow-hidden mb-[100vh]">
+      <main className="relative z-10 w-full bg-white flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-b-[40px] md:rounded-b-[80px] overflow-hidden mb-[86vh]">
         <Header />
         <Hero />
         <Integrations />

@@ -38,7 +38,7 @@ export const Hero = () => {
                 placeholder="Seu melhor e-mail" 
                 className="input-pill flex-grow modern-shadow text-sm"
               />
-              <button className="bg-foreground text-background btn-pill text-sm font-bold modern-shadow hover:bg-black/90 whitespace-nowrap">
+              <button className="bg-[#EAB308] text-[#111111] btn-pill text-sm font-bold modern-shadow hover:bg-[#d4a107] whitespace-nowrap">
                 Garantir Meu Acesso
               </button>
             </AnimatedItem>
