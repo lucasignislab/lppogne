@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
     LucideIcon,
-    TrendingUp, // Generic icon for fallback
     Search,
     DeleteIcon,
 } from 'lucide-react';
@@ -200,6 +199,8 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
         );
     }, [items, searchTerm]);
 
+    const visibleItems = useMemo(() => getVisibleItems(), [getVisibleItems]);
+
     // Handler for selecting an item from the dropdown
     const handleSelectChain = (id: ChainItem['id'], name: string) => {
         const index = items.findIndex((c) => c.id === id);
@@ -213,8 +214,10 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
         setShowDropdown(false);
     };
 
-    // The current item displayed in the center
-    const currentItem = items[currentIndex];
+    // Keep the middle card synchronized with the item centered on the right column.
+    const currentItem =
+        visibleItems.find((item) => item.distanceFromCenter === 3) ??
+        items[currentIndex];
 
     // --- JSX Render ---
     return (
@@ -240,7 +243,7 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
                         <div className="absolute bottom-0 h-1/4 w-full bg-transparent "></div>
                     </div>
 
-                    {getVisibleItems().filter(c => c.distanceFromCenter < 0).map((chain) => (
+                    {visibleItems.filter(c => c.distanceFromCenter < 0).map((chain) => (
                         <CarouselItemCard
                             key={chain.id}
                             chain={chain} // Renamed prop to 'chain' for this component's context
@@ -358,7 +361,7 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
                         <div className="absolute bottom-0 h-1/4 w-full bg-transparent "></div>
                     </div>
 
-                    {getVisibleItems().filter(c => c.distanceFromCenter > 0).map((chain) => (
+                    {visibleItems.filter(c => c.distanceFromCenter > 0).map((chain) => (
                         <CarouselItemCard
                             key={chain.id}
                             chain={chain}
