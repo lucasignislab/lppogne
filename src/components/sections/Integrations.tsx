@@ -7,7 +7,7 @@ import { AnimatedSection, AnimatedItem } from "../ui/AnimatedSection";
 
 export const Integrations = () => {
   return (
-    <section className="py-12 bg-white border-y border-border/50">
+    <section className="py-12 bg-white">
       <Container>
         <AnimatedSection className="flex flex-col items-center text-center" stagger={0.2}>
           <AnimatedItem className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground mb-10">

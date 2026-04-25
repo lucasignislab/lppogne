@@ -27,21 +27,10 @@ export const Hero = () => {
             </AnimatedItem>
 
             <AnimatedItem className="text-muted-foreground text-lg md:text-xl font-medium leading-relaxed mb-10 max-w-lg">
-              A Ratoeira Ads e o Michael Pogne se uniram para dar a você, aluno do Método PNG, 
-              acesso exclusivo à ferramenta que protege seu orçamento e rastreia cada venda.
+              A Ratoeira Ads e o Michael Pogne se uniram para dar a você, aluno do Pogne, acesso exclusivo à ferramenta que protege seu orçamento e rastreia cada venda.
             </AnimatedItem>
 
-            {/* Capture Form */}
-            <AnimatedItem className="flex flex-col sm:flex-row gap-3 max-w-md">
-              <input 
-                type="email" 
-                placeholder="Seu melhor e-mail" 
-                className="input-pill flex-grow modern-shadow text-sm"
-              />
-              <button className="bg-[#EAB308] text-[#111111] btn-pill text-sm font-bold modern-shadow hover:bg-[#d4a107] whitespace-nowrap">
-                Garantir Meu Acesso
-              </button>
-            </AnimatedItem>
+
           </AnimatedSection>
 
           {/* Right Image */}

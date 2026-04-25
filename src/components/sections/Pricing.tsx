@@ -2,16 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Container } from "../ui/Container";
-import { Check, ShieldCheck, Zap } from "lucide-react";
-
-const features = [
-  "Rastreamento de vendas 100% automático",
-  "Bloqueio de bots e cliques fraudulentos",
-  "Dashboard com ROI e CPA em tempo real",
-  "Integração com +70 plataformas de afiliados",
-  "Setup em menos de 15 minutos",
-  "Suporte dedicado para alunos PNG",
-];
+import { Check, ShieldCheck } from "lucide-react";
+import { openLeadCaptureModal } from "../ui/LeadCaptureModal";
 
 export const Pricing = () => {
   return (
@@ -38,7 +30,7 @@ export const Pricing = () => {
           </motion.h2>
           <p className="text-white/50 text-lg max-w-2xl mx-auto">
             Condição especial negociada entre a Ratoeira Ads e o Michael Pogne, 
-            disponível apenas para alunos do Método PNG.
+            disponível apenas para alunos dele!
           </p>
         </div>
 
@@ -49,54 +41,51 @@ export const Pricing = () => {
           viewport={{ once: true }}
           className="max-w-lg mx-auto"
         >
-          <div className="relative bg-white text-[#0f0e0e] p-10 md:p-14 rounded-3xl modern-shadow">
-            {/* Badge */}
-            <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
-              <Zap className="w-3 h-3" />
-              Ratoeira Ads × Método PNG
-            </span>
-
+          <div className="relative overflow-hidden bg-white text-[#0f0e0e] p-10 md:p-14 rounded-3xl modern-shadow border border-black/10">
             <div className="text-center mb-8 pt-2">
               <h3 className="text-xl font-bold mb-1">Plano Aluno PNG</h3>
-              <p className="text-sm text-muted-foreground">Tudo que você precisa para proteger e escalar</p>
+              <p className="text-sm font-black uppercase tracking-widest text-primary">35% OFF EXCLUSIVO</p>
             </div>
 
             {/* Price */}
-            <div className="text-center mb-10">
-              <div className="flex items-baseline justify-center gap-1">
-                <span className="text-5xl md:text-6xl font-black text-primary">—</span>
+            <div className="text-center mb-8 rounded-2xl bg-zinc-100 p-6 md:p-8">
+              <p className="text-base text-muted-foreground line-through">De R$ 127, 00</p>
+              <p className="text-4xl md:text-5xl font-black text-primary mt-2">por R$ 82,55/mês</p>
+              <p className="text-xs font-bold text-muted-foreground mt-2">*com renovação automática</p>
+              <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-black uppercase tracking-wide">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                Garantia de 7 dias
               </div>
-              <p className="text-xs font-bold text-muted-foreground mt-2 uppercase tracking-widest">
-                Preço a ser revelado em breve
+            </div>
+
+            <div className="mb-10">
+              <h4 className="text-sm font-black uppercase tracking-widest mb-4 pt-6 border-t border-black/10">Limites do Plano</h4>
+              <ul className="space-y-3 text-sm text-left">
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />Ebook Mensal</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />Dashboard Financeiro</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />Bloquio automático de Bots e IPs</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />1 perfil Google Ads conectado</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />2 Tags Ratoeira automáticas</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />2 Plataformas/Webhooks simultâneos</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />2 Cobtas de anúncios conectadas</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />Máximo 5 vendas/mês*</li>
+              </ul>
+              <p className="text-[11px] text-muted-foreground mt-3">
+                *(após trackeamento, para de funcionar)
               </p>
             </div>
 
-            {/* Features */}
-            <ul className="space-y-4 mb-10">
-              {features.map((feature, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="flex items-center gap-3 text-sm"
-                >
-                  <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <Check className="w-3 h-3 text-primary" />
-                  </div>
-                  {feature}
-                </motion.li>
-              ))}
-            </ul>
-
             {/* CTA */}
-            <button className="w-full bg-[#EAB308] text-[#111111] btn-pill text-sm font-bold modern-shadow hover:bg-[#d4a107] flex items-center justify-center gap-2">
+            <button
+              type="button"
+              onClick={openLeadCaptureModal}
+              className="w-full bg-[#EAB308] text-[#111111] btn-pill text-sm font-bold modern-shadow hover:bg-[#d4a107] flex items-center justify-center gap-2"
+            >
               Garantir Meu Acesso
             </button>
             
             <p className="text-center text-[10px] text-muted-foreground mt-4">
-              Disponível apenas para alunos verificados do Método PNG.
+              Disponível apenas para alunos dele!
             </p>
           </div>
         </motion.div>

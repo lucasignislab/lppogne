@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Container } from "../ui/Container";
 import { CheckCircle2, MousePointerClick } from "lucide-react";
 import { AnimatedSection, AnimatedItem } from "../ui/AnimatedSection";
+import { openLeadCaptureModal } from "../ui/LeadCaptureModal";
 
 const features = [
   {
@@ -89,17 +90,17 @@ export const Features = () => {
         </div>
 
         <AnimatedItem className="text-center mt-20">
-          <a href="#hero">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="inline-flex items-center rounded-full bg-[#EAB308] text-[#111111] px-8 py-4 font-bold transition-all hover:bg-[#d4a107]"
-            >
-              <span>Garantir Meu Acesso</span>
-              <MousePointerClick className="ml-2" />
-            </motion.button>
-          </a>
+          <motion.button
+            type="button"
+            onClick={openLeadCaptureModal}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className="inline-flex items-center rounded-full bg-[#EAB308] text-[#111111] px-8 py-4 font-bold transition-all hover:bg-[#d4a107]"
+          >
+            <span>Garantir Meu Acesso</span>
+            <MousePointerClick className="ml-2" />
+          </motion.button>
         </AnimatedItem>
       </Container>
     </section>

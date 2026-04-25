@@ -17,13 +17,13 @@ export const HowItWorks = () => {
           
           <AnimatedItem>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-6">
-              Veja como a <span className="text-primary italic">Ratoeira</span> protege seu capital
+              Entenda os limites do seu <span className="text-primary italic">plano exclusivo</span>
             </h2>
           </AnimatedItem>
           
           <AnimatedItem className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Uma demonstração rápida de como nossa blindagem inteligente identifica e bloqueia 
-            cliques fraudulentos antes que eles consumam seu orçamento.
+            Veja com clareza o que seu plano inclui, os recursos disponíveis e até onde sua operação
+            pode escalar com segurança dentro dos limites contratados.
           </AnimatedItem>
         </AnimatedSection>
 
