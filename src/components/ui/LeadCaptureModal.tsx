@@ -4,7 +4,9 @@ import { useEffect, useMemo, useState } from "react";
 import { X } from "lucide-react";
 
 const LEAD_MODAL_EVENT = "open-lead-capture-modal";
-const CHECKOUT_URL = process.env.NEXT_PUBLIC_CHECKOUT_URL || "#";
+const CHECKOUT_URL = "https://clkdmg.site/subscribe/ratoeira-ads-pogne";
+const CHECKOUT_COUPON = "DESTRAVE35";
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"] as const;
 
 function isEmailValid(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -12,6 +14,26 @@ function isEmailValid(email: string) {
 
 function onlyDigits(value: string) {
   return value.replace(/\D/g, "");
+}
+
+function buildCheckoutUrl(payload: { name: string; email: string; phone: string }) {
+  const checkoutUrl = new URL(CHECKOUT_URL);
+
+  checkoutUrl.searchParams.set("name", payload.name.trim());
+  checkoutUrl.searchParams.set("email", payload.email.trim());
+  checkoutUrl.searchParams.set("phone", onlyDigits(payload.phone));
+  checkoutUrl.searchParams.set("coupon", CHECKOUT_COUPON);
+  checkoutUrl.searchParams.set("cupom", CHECKOUT_COUPON);
+
+  if (typeof window !== "undefined") {
+    const pageParams = new URLSearchParams(window.location.search);
+    UTM_KEYS.forEach((key) => {
+      const value = pageParams.get(key);
+      if (value) checkoutUrl.searchParams.set(key, value);
+    });
+  }
+
+  return checkoutUrl.toString();
 }
 
 export function LeadCaptureModal() {
@@ -70,7 +92,16 @@ export function LeadCaptureModal() {
           Preencha seus dados para continuar para o checkout.
         </p>
 
-        <form className="mt-6 space-y-4">
+        <form
+          className="mt-6 space-y-4"
+          onSubmit={(event) => {
+            event.preventDefault();
+            if (!isFormValid) return;
+
+            const checkoutLink = buildCheckoutUrl({ name, email, phone });
+            window.location.href = checkoutLink;
+          }}
+        >
           <div>
             <label htmlFor="lead-name" className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-[#111111]">
               Nome completo
@@ -116,14 +147,9 @@ export function LeadCaptureModal() {
             />
           </div>
 
-          <a
-            href={CHECKOUT_URL}
-            target="_blank"
-            rel="noreferrer"
-            aria-disabled={!isFormValid}
-            onClick={(event) => {
-              if (!isFormValid) event.preventDefault();
-            }}
+          <button
+            type="submit"
+            disabled={!isFormValid}
             className={`mt-2 inline-flex h-12 w-full items-center justify-center rounded-full px-5 text-sm font-black uppercase tracking-wide transition-colors ${
               isFormValid
                 ? "bg-[#EAB308] text-[#111111] hover:bg-[#d4a107]"
@@ -131,7 +157,7 @@ export function LeadCaptureModal() {
             }`}
           >
             Ir para o checkout
-          </a>
+          </button>
         </form>
       </div>
     </div>
