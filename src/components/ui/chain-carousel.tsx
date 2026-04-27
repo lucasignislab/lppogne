@@ -13,6 +13,29 @@ const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     <input {...props} />
 );
 
+const MarqueeTrack: React.FC<{
+    items: ChainItem[];
+    reverse?: boolean;
+}> = ({ items, reverse = false }) => {
+    const marqueeItems = [...items, ...items];
+
+    return (
+        <div className="relative w-full overflow-hidden rounded-full border border-zinc-800/80 bg-zinc-950/70 py-2">
+            <div className={`flex w-max items-center gap-6 px-4 ${reverse ? "animate-marquee-rtl" : "animate-marquee-ltr"}`}>
+                {marqueeItems.map((item, idx) => (
+                    <div key={`${item.id}-${idx}`} className="shrink-0 rounded-full border border-zinc-800 bg-black p-1.5">
+                        {item.logo ? (
+                            <img src={item.logo} alt={`${item.name} logo`} className="size-8 rounded-full object-cover" />
+                        ) : (
+                            <item.icon className="size-8 text-zinc-500" />
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
 // --- Core Data Interface ---
 export interface ChainItem {
     id: string | number; // Unique ID
@@ -62,19 +85,22 @@ const CarouselItemCard: React.FC<CarouselItemProps> = ({ chain, side }) => {
     let scale = 1;
     let zIndex = 0;
 
+    const verticalSpacing = 88;
+    const horizontalCurve = 34;
+
     if (side === 'left') {
         verticalPos = distanceFromCenter + 3; // maps -5..-1 to -2..2
         const curve = Math.abs(verticalPos);
-        xOffset = -(curve * 50); // curves outwards to the left
-        yOffset = verticalPos * 110; // spacing between items
+        xOffset = -(curve * horizontalCurve); // curves outwards to the left
+        yOffset = verticalPos * verticalSpacing; // spacing between items
         opacity = Math.max(0, 1 - curve * 0.35); // fade out edges
         scale = Math.max(0.75, 1 - curve * 0.1); // shrink edges
         zIndex = 10 - curve;
     } else {
         verticalPos = distanceFromCenter - 3; // maps 1..5 to -2..2
         const curve = Math.abs(verticalPos);
-        xOffset = (curve * 50); // curves outwards to the right
-        yOffset = verticalPos * 110; // spacing between items
+        xOffset = (curve * horizontalCurve); // curves outwards to the right
+        yOffset = verticalPos * verticalSpacing; // spacing between items
         opacity = Math.max(0, 1 - curve * 0.35); // fade out edges
         scale = Math.max(0.75, 1 - curve * 0.1); // shrink edges
         zIndex = 10 - curve;
@@ -93,7 +119,7 @@ const CarouselItemCard: React.FC<CarouselItemProps> = ({ chain, side }) => {
     return (
         <motion.div
             key={id}
-            className={`absolute flex items-center gap-4 text-background  px-6 py-3 
+            className={`absolute flex items-center gap-3 sm:gap-4 text-background px-4 sm:px-6 py-2.5 sm:py-3
                 ${side === 'left' ? 'flex-row-reverse' : 'flex-row'}`}
             animate={{
                 opacity,
@@ -108,9 +134,9 @@ const CarouselItemCard: React.FC<CarouselItemProps> = ({ chain, side }) => {
 
             <div className={`flex flex-col mx-4 ${side === 'left' ? 'text-right' : 'text-left'}`}>
                 {/* FIX: Added whitespace-nowrap to prevent the name from wrapping. */}
-                <span className="text-sm lg:text-md font-bold text-zinc-200 whitespace-nowrap">{name}</span>
+                <span className="text-xs sm:text-sm lg:text-md font-bold text-zinc-200 whitespace-nowrap">{name}</span>
                 {/* Display generic details/description */}
-                <span className="text-xs text-zinc-500">{details}</span>
+                <span className="text-[11px] sm:text-xs text-zinc-500">{details}</span>
             </div>
         </motion.div>
     );
@@ -130,11 +156,24 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
     const [isPaused, setIsPaused] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [showDropdown, setShowDropdown] = useState(false);
+    const [isMobileLayout, setIsMobileLayout] = useState(false);
 
     // References for Framer Motion scroll-based animation
     const rightSectionRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(rightSectionRef, { margin: '-100px 0px -100px 0px' });
     const totalItems = items.length;
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const mediaQuery = window.matchMedia("(max-width: 1279px)");
+        const sync = () => setIsMobileLayout(mediaQuery.matches);
+
+        sync();
+        mediaQuery.addEventListener("change", sync);
+
+        return () => mediaQuery.removeEventListener("change", sync);
+    }, []);
 
     // 1. Auto-scroll effect
     useEffect(() => {
@@ -215,22 +254,22 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
     };
 
     // Keep the middle card synchronized with the item centered on the right column.
-    const currentItem =
-        visibleItems.find((item) => item.distanceFromCenter === 3) ??
-        items[currentIndex];
+    const currentItem = isMobileLayout
+        ? items[currentIndex]
+        : visibleItems.find((item) => item.distanceFromCenter === 3) ?? items[currentIndex];
 
     // --- JSX Render ---
     return (
-        <div id='explore-section' className={` space-y-20
+        <div id='explore-section' className={`space-y-12 md:space-y-20
             ${className}`}>
             <div className='flex flex-col xl:flex-row 
-            max-w-7xl mx-auto px-4 md:px-8 gap-12 justify-center items-center'>
+            max-w-7xl mx-auto px-4 md:px-8 gap-8 md:gap-12 justify-center items-center'>
 
 
                 {/* Left Section - Chain Carousel (Hidden on smaller screens) */}
                 <motion.div
-                    className="relative w-full max-w-md xl:max-w-2xl h-[450px] 
-                flex items-center justify-center hidden xl:flex -left-14"
+                    className="relative w-full max-w-md xl:max-w-2xl h-[380px] md:h-[430px] xl:h-[450px]
+                items-center justify-center hidden xl:flex xl:-left-8"
                     onMouseEnter={() => !searchTerm && setIsPaused(true)}
                     onMouseLeave={() => !searchTerm && setIsPaused(false)}
                     initial={{ x: '-100%', opacity: 0 }}
@@ -257,8 +296,14 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
                  gap-4 max-w-md">
 
                     {/* Currently Selected Item Display */}
+                    {isMobileLayout && (
+                        <div className="xl:hidden mt-1 space-y-3">
+                            <MarqueeTrack items={items} />
+                        </div>
+                    )}
+
                     {currentItem && (
-                        <div className="flex flex-col items-center justify-center gap-1 mt-4">
+                    <div className="flex flex-col items-center justify-center gap-1 mt-2 sm:mt-4">
                             <div className='p-[2px] bg-black rounded-full shadow-[0_0_40px_rgba(234,179,8,0.4)]'>
                                 {currentItem.logo ? (
                                     <img src={currentItem.logo} alt={`${currentItem.name} logo`} className="size-20 lg:size-24 rounded-full object-cover" />
@@ -266,17 +311,23 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
                                     <currentItem.icon className="size-20 lg:size-24 text-zinc-400" />
                                 )}
                             </div>
-                            <h3 className="text-2xl xl:text-3xl font-black text-white uppercase tracking-wider mt-6">
+                            <h3 className="text-xl sm:text-2xl xl:text-3xl font-black text-white uppercase tracking-wider mt-4 sm:mt-6">
                                 {currentItem.name}
                             </h3>
-                            <p className="text-sm xl:text-base font-bold text-[#EAB308] uppercase tracking-widest">
+                            <p className="text-xs sm:text-sm xl:text-base font-bold text-[#EAB308] uppercase tracking-widest">
                                 {currentItem.details || 'View Details'}
                             </p>
                         </div>
                     )}
 
+                    {isMobileLayout && (
+                        <div className="xl:hidden mb-1 space-y-3">
+                            <MarqueeTrack items={items} reverse />
+                        </div>
+                    )}
+
                     {/* Search Bar */}
-                    <div className="mt-6 relative max-w-lg mx-auto xl:mx-0">
+                    <div className="mt-4 sm:mt-6 relative max-w-lg mx-auto xl:mx-0">
                         <div className="px-3 flex items-center relative">
                             <Input
                                 type="text"
@@ -347,8 +398,8 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
                 {/* Right Section - Chain Carousel */}
                 <motion.div
                     ref={rightSectionRef}
-                    className="relative w-full max-w-md  xl:max-w-2xl h-[450px] 
-                flex items-center justify-center -right-14"
+                    className="relative w-full max-w-md xl:max-w-2xl h-[380px] md:h-[430px] xl:h-[450px]
+                items-center justify-center xl:flex xl:-right-8 hidden"
                     onMouseEnter={() => !searchTerm && setIsPaused(true)}
                     onMouseLeave={() => !searchTerm && setIsPaused(false)}
                     initial={{ x: '100%', opacity: 0 }}

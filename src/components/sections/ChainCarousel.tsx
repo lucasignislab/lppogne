@@ -98,16 +98,16 @@ const defaultItems: ChainItem[] = [
 
 export default function ChainCarouselSection() {
   return (
-    <section className="bg-black py-24 relative overflow-hidden">
+    <section className="bg-black py-16 md:py-24 relative overflow-hidden">
       {/* Subtle background glow to enhance contrast */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(234,179,8,0.05)_0%,rgba(0,0,0,1)_70%)] pointer-events-none" />
       
       <div className="relative z-10">
-        <div className="px-4 text-center mb-20 flex flex-col items-center">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-white uppercase leading-none drop-shadow-md">
+        <div className="px-4 text-center mb-12 md:mb-20 flex flex-col items-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-white uppercase leading-none drop-shadow-md">
             Mais de 70 plataformas.
           </h2>
-          <h3 className="text-3xl md:text-4xl lg:text-6xl font-black tracking-tighter text-[#EAB308] uppercase italic leading-tight mt-3 drop-shadow-md">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black tracking-tighter text-[#EAB308] uppercase italic leading-tight mt-3 drop-shadow-md">
             Conexão em minutos. Zero retrabalho.
           </h3>
           <p className="text-sm md:text-lg text-zinc-300 font-medium max-w-3xl mt-8 leading-relaxed">

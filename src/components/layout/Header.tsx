@@ -13,7 +13,7 @@ export const Header = () => {
       className="fixed top-0 left-0 right-0 z-50 bg-[#e8e8e8] backdrop-blur-md border-b border-border/40"
     >
       <Container>
-        <div className="flex items-center justify-between h-20 relative">
+        <div className="flex items-center justify-between h-16 sm:h-20 relative">
           {/* Partnership Branding */}
           <Link href="/" className="flex items-center">
             <Image 
@@ -21,7 +21,7 @@ export const Header = () => {
               alt="Ratoeira Ads × Método PNG" 
               width={280}
               height={56}
-              className="h-10 lg:h-12 w-auto object-contain"
+              className="h-8 sm:h-10 lg:h-12 w-auto object-contain"
               priority
             />
           </Link>
@@ -35,7 +35,7 @@ export const Header = () => {
 
           {/* Right Action Button */}
           <div className="flex items-center gap-4 z-10">
-            <button className="bg-[#EAB308] text-[#111111] btn-pill text-sm font-bold modern-shadow hover:bg-[#d4a107]">
+            <button className="bg-[#EAB308] text-[#111111] rounded-full px-4 py-2 sm:px-8 sm:py-4 text-xs sm:text-sm font-bold modern-shadow hover:bg-[#d4a107] whitespace-nowrap">
               Quero Minha Vaga
             </button>
           </div>

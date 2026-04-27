@@ -289,11 +289,10 @@ export function CinematicFooter() {
       */}
       <div
         ref={wrapperRef}
-        className="relative h-screen w-full"
+        className="relative w-full"
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
-        {/* The actual footer stays fixed to the viewport underneath everything */}
-        <footer className="fixed bottom-0 left-0 flex h-screen w-full flex-col justify-between overflow-hidden bg-black text-white cinematic-footer-wrapper border-t border-white/5">
+        <footer className="relative flex min-h-[85svh] w-full flex-col justify-between overflow-hidden bg-black text-white cinematic-footer-wrapper border-t border-white/5">
           
           {/* Ambient Light & Grid Background */}
           <div className="footer-aurora absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[80px] pointer-events-none z-0" />
@@ -308,7 +307,7 @@ export function CinematicFooter() {
           </div>
 
           {/* 1. Diagonal Sleek Marquee (Top of footer) */}
-          <div className="absolute top-24 md:top-32 left-0 w-full overflow-hidden border-y border-white/10 bg-black/60 backdrop-blur-md py-4 z-10 -rotate-2 scale-110 shadow-2xl">
+          <div className="absolute top-16 md:top-28 left-0 w-full overflow-hidden border-y border-white/10 bg-black/60 backdrop-blur-md py-3 md:py-4 z-10 -rotate-2 scale-110 shadow-2xl">
             <div className="flex w-max animate-footer-scroll-marquee text-xs md:text-sm font-bold tracking-[0.3em] text-zinc-400 uppercase">
               <MarqueeItem />
               <MarqueeItem />
@@ -316,7 +315,7 @@ export function CinematicFooter() {
           </div>
 
           {/* 2. Main Center Content */}
-          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-32 md:mt-40 w-full max-w-6xl mx-auto">
+          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 sm:px-6 mt-24 md:mt-36 w-full max-w-6xl mx-auto py-14 md:py-16">
             <h2
               ref={headingRef}
               className="text-3xl md:text-5xl lg:text-6xl font-black footer-text-glow tracking-tighter mb-8 text-center uppercase leading-tight"
@@ -375,7 +374,7 @@ export function CinematicFooter() {
           </div>
 
           {/* 3. Bottom Bar / Credits */}
-          <div className="relative z-20 w-full pb-6 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 mt-6">
+          <div className="relative z-20 w-full pb-6 px-4 sm:px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 mt-4">
             
             {/* Copyright */}
             <div className="text-zinc-500 text-[10px] md:text-xs font-semibold tracking-widest uppercase text-center md:text-left">

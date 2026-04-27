@@ -7,9 +7,9 @@ import { AnimatedSection, AnimatedItem } from "../ui/AnimatedSection";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-32 pb-20 bg-background overflow-hidden">
+    <section className="relative flex items-center bg-background overflow-hidden pt-24 pb-14 sm:pt-28 sm:pb-16 lg:min-h-[100svh] lg:pt-32 lg:pb-20">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Left Content */}
           <AnimatedSection className="relative z-10" stagger={0.15}>
             <AnimatedItem className="inline-flex items-center gap-2 px-3 py-1 bg-white modern-shadow rounded-full text-xs font-bold mb-8 border border-border/50">
@@ -18,7 +18,7 @@ export const Hero = () => {
             </AnimatedItem>
 
             <AnimatedItem>
-              <h1 className="text-5xl md:text-6xl lg:text-[4.2rem] font-black text-foreground leading-[1.05] tracking-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-black text-foreground leading-[1.05] tracking-tight mb-5 sm:mb-6">
                 Comece no <br />
                 Google Ads <br />
                 com <span className="text-primary italic">blindagem</span> <br />
@@ -26,7 +26,7 @@ export const Hero = () => {
               </h1>
             </AnimatedItem>
 
-            <AnimatedItem className="text-muted-foreground text-lg md:text-xl font-medium leading-relaxed mb-10 max-w-lg">
+            <AnimatedItem className="text-muted-foreground text-base sm:text-lg md:text-xl font-medium leading-relaxed mb-8 sm:mb-10 max-w-lg">
               A Ratoeira Ads e o Michael Pogne se uniram para dar a você, aluno do Pogne, acesso exclusivo à ferramenta que protege seu orçamento e rastreia cada venda.
             </AnimatedItem>
 
@@ -38,9 +38,9 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.95, x: 20 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative h-[600px] w-full"
+            className="relative w-full"
           >
-            <div className="relative w-full h-full rounded-2xl overflow-hidden modern-shadow border-4 border-white">
+            <div className="relative w-full min-h-[320px] sm:min-h-[430px] lg:min-h-[560px] rounded-2xl overflow-hidden modern-shadow border-4 border-white">
               {/* Nota: Vou usar a imagem gerada. Como o caminho muda por causa do timestamp,
                   espero que o sistema resolva ou eu forneça o caminho exato se necessário.
                   Mas aqui usarei o padrão do projeto. */}
@@ -59,7 +59,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="absolute -bottom-6 -left-6 glass-card p-6 rounded-xl max-w-[240px]"
+              className="relative mt-4 sm:absolute sm:-bottom-6 sm:-left-6 glass-card p-4 sm:p-6 rounded-xl w-full max-w-[240px]"
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
