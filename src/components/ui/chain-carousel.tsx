@@ -16,12 +16,16 @@ const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
 const MarqueeTrack: React.FC<{
     items: ChainItem[];
     reverse?: boolean;
-}> = ({ items, reverse = false }) => {
+    durationSec?: number;
+}> = ({ items, reverse = false, durationSec = 24 }) => {
     const marqueeItems = [...items, ...items];
 
     return (
         <div className="relative w-full overflow-hidden rounded-full border border-zinc-800/80 bg-zinc-950/70 py-2">
-            <div className={`flex w-max items-center gap-6 px-4 ${reverse ? "animate-marquee-rtl" : "animate-marquee-ltr"}`}>
+            <div
+                className={`flex w-max items-center gap-6 px-4 ${reverse ? "animate-marquee-rtl" : "animate-marquee-ltr"}`}
+                style={{ animationDuration: `${durationSec}s` }}
+            >
                 {marqueeItems.map((item, idx) => (
                     <div key={`${item.id}-${idx}`} className="shrink-0 rounded-full border border-zinc-800 bg-black p-1.5">
                         {item.logo ? (
@@ -298,7 +302,7 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
                     {/* Currently Selected Item Display */}
                     {isMobileLayout && (
                         <div className="xl:hidden mt-1 space-y-3">
-                            <MarqueeTrack items={items} />
+                            <MarqueeTrack items={items} durationSec={20} />
                         </div>
                     )}
 
@@ -322,7 +326,7 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
 
                     {isMobileLayout && (
                         <div className="xl:hidden mb-1 space-y-3">
-                            <MarqueeTrack items={items} reverse />
+                            <MarqueeTrack items={items} reverse durationSec={26} />
                         </div>
                     )}
 
