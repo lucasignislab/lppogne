@@ -52,8 +52,8 @@ export const Pricing = () => {
               <p className="text-base text-muted-foreground line-through">De R$ 127, 00</p>
               <p className="text-3xl md:text-4xl font-black text-primary mt-1">por R$ 82,55/mês</p>
               <p className="text-xs font-bold text-muted-foreground mt-1">*com renovação automática</p>
-              <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-black uppercase tracking-wide">
-                <ShieldCheck className="w-3.5 h-3.5" />
+              <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-[#EAB308]/40 bg-[#111111] text-[#EAB308] px-3 py-1 text-[11px] font-black uppercase tracking-wide shadow-[0_6px_18px_rgba(0,0,0,0.18)]">
+                <ShieldCheck className="h-3.5 w-3.5 text-[#EAB308]" />
                 Garantia de 7 dias
               </div>
             </div>
@@ -71,7 +71,7 @@ export const Pricing = () => {
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />Máximo 5 vendas/mês*</li>
               </ul>
               <p className="text-[11px] text-muted-foreground mt-3">
-                *(após trackeamento, para de funcionar)
+                *(após trackeamento para de funcionar)
               </p>
             </div>
 
@@ -83,10 +83,6 @@ export const Pricing = () => {
             >
               Garantir Meu Acesso
             </button>
-            
-            <p className="text-center text-[10px] text-muted-foreground mt-3">
-              Disponível apenas para alunos dele!
-            </p>
           </div>
         </motion.div>
       </Container>
