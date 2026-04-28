@@ -17,7 +17,7 @@ const MarqueeTrack: React.FC<{
     items: ChainItem[];
     reverse?: boolean;
     durationSec?: number;
-}> = ({ items, reverse = false, durationSec = 24 }) => {
+}> = ({ items, reverse = false, durationSec = 40 }) => {
     const marqueeItems = [...items, ...items];
 
     return (
@@ -302,7 +302,7 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
                     {/* Currently Selected Item Display */}
                     {isMobileLayout && (
                         <div className="xl:hidden mt-1 space-y-3">
-                            <MarqueeTrack items={items} durationSec={20} />
+                            <MarqueeTrack items={items} durationSec={40} />
                         </div>
                     )}
 
@@ -326,7 +326,7 @@ const ChainCarousel: React.FC<ChainCarouselProps> = ({
 
                     {isMobileLayout && (
                         <div className="xl:hidden mb-1 space-y-3">
-                            <MarqueeTrack items={items} reverse durationSec={26} />
+                            <MarqueeTrack items={items} reverse durationSec={48} />
                         </div>
                     )}
 
