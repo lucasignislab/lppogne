@@ -6,7 +6,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
 import { MousePointerClick } from "lucide-react";
-import { openLeadCaptureModal } from "./LeadCaptureModal";
 
 // Register ScrollTrigger safely for React
 if (typeof window !== "undefined") {
@@ -328,9 +327,8 @@ export function CinematicFooter() {
               
               {/* Primary CTA */}
               <MagneticButton
-                as="button"
-                type="button"
-                onClick={openLeadCaptureModal}
+                as="a"
+                href="#pricing"
                 className="bg-[#EAB308] text-[#111111] hover:bg-[#d4a107] px-8 py-4 rounded-full font-black text-sm md:text-base flex items-center gap-3 transition-colors uppercase tracking-wide"
               >
                 Garantir Meu Acesso

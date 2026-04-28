@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Container } from "../ui/Container";
 import { Check, ShieldCheck } from "lucide-react";
-import { openLeadCaptureModal } from "../ui/LeadCaptureModal";
 
 export const Pricing = () => {
   return (
@@ -76,13 +75,12 @@ export const Pricing = () => {
             </div>
 
             {/* CTA */}
-            <button
-              type="button"
-              onClick={openLeadCaptureModal}
+            <a
+              href="#pricing"
               className="w-full bg-[#EAB308] text-[#111111] btn-pill text-sm font-bold modern-shadow hover:bg-[#d4a107] flex items-center justify-center gap-2"
             >
               Garantir Meu Acesso
-            </button>
+            </a>
           </div>
         </motion.div>
       </Container>

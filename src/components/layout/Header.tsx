@@ -35,9 +35,9 @@ export const Header = () => {
 
           {/* Right Action Button */}
           <div className="flex items-center gap-4 z-10">
-            <button className="bg-[#EAB308] text-[#111111] rounded-full px-4 py-2 sm:px-8 sm:py-4 text-xs sm:text-sm font-bold modern-shadow hover:bg-[#d4a107] whitespace-nowrap">
+            <a href="#pricing" className="bg-[#EAB308] text-[#111111] rounded-full px-4 py-2 sm:px-8 sm:py-4 text-xs sm:text-sm font-bold modern-shadow hover:bg-[#d4a107] whitespace-nowrap">
               Quero Minha Vaga
-            </button>
+            </a>
           </div>
         </div>
       </Container>

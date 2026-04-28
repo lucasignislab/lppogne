@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { LockKeyhole, BadgeCheck, Sparkles, ShieldCheck } from "lucide-react";
 import { Container } from "../ui/Container";
 import { AnimatedItem, AnimatedSection } from "../ui/AnimatedSection";
-import { openLeadCaptureModal } from "../ui/LeadCaptureModal";
 
 const exclusivityPoints = [
   "Condição especial negociada entre a Ratoeira Ads e o Michael Pogne.",
@@ -56,9 +55,8 @@ export const ExclusiveAccess = () => {
                 ))}
               </ul>
 
-              <motion.button
-                type="button"
-                onClick={openLeadCaptureModal}
+              <motion.a
+                href="#pricing"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 320, damping: 20 }}
@@ -66,7 +64,7 @@ export const ExclusiveAccess = () => {
               >
                 Garantir Meu Acesso
                 <Sparkles className="w-4 h-4" />
-              </motion.button>
+              </motion.a>
 
               <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-black uppercase tracking-wide">
                 <ShieldCheck className="w-3.5 h-3.5" />
