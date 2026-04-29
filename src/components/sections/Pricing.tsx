@@ -66,7 +66,7 @@ export const Pricing = () => {
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />1 perfil Google Ads conectado</li>
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />2 Tags Ratoeira automáticas</li>
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />2 Plataformas/Webhooks simultâneos</li>
-                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />2 Cobtas de anúncios conectadas</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />2 Contas de anúncios conectadas</li>
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-[#EAB308] shrink-0" />Máximo 5 vendas/mês*</li>
               </ul>
               <p className="text-[11px] text-muted-foreground mt-3">
